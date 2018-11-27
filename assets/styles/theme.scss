@@ -1,9 +1,35 @@
+$plant-width: 50px;
+$plant-height: $plant-width;
+
 .sidebar {
   background-color: $sidebar-background;
 }
 
 .plots {
   background: $plot-background;
+}
+
+.plot {
+  background: white;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.plot-title {
+  margin: 20px auto;
+}
+
+.plant-holder {
+  margin: 20px auto;
+}
+
+.plant {
+  height: $plant-height;
+  width: $plant-width;
+  background: green;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .top {
