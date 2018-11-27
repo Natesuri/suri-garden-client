@@ -15,17 +15,25 @@
       <div id="main" class="container-fluid row">
         <div id="side-bar" class="sidebar col-12 col-md-2">
           <div id="top" class="row top">
-            <div id="username" class="col-md-8 align-self-center"><h2>Username</h2></div>
-            <button class="btn btn-md h-75 align-self-center">Menu</button>
+            <div id="username" class="col-8 align-self-center"><h2>Username</h2></div>
+            <div id="menu" class="col-4 align-self-center"><button class="btn btn-md">Menu</button></div>
           </div>
-          <div>
+          <div id="reminders">
             <div id="reminders-heading" class="row">
-              <div class="col-md"><h4>Reminders</h4></div>
-              <div class="col-md-2"><h4>|</h4></div>
-              <div class="col-md"><h4>edit</h4></div>
+              <div class="col"><h4>Reminders</h4></div>
+              <div class="col"><h4>|</h4></div>
+              <div class="col"><h4>edit</h4></div>
             </div>
             <div id="reminders-alerts">
-              <div id="alerts"></div>
+              <div id="alerts">
+                <div id="harvesting-reminder" class="row">
+                  <div id="harvest-heading" class="col"><h4>Harvest</h4></div>
+                  <!-- <div class="col row"><h5>Example</h5><button class="btn"></button></div> -->
+                </div>
+                <div id="watering-reminder" class="row">
+                  <div id="water-heading" class="col"><h4>Water</h4></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
