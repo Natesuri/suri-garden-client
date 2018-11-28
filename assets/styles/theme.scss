@@ -7,13 +7,24 @@ $plant-height: $plant-width;
 
 .plots {
   background: $plot-background;
+  height: inherit;
+}
+
+.main {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
 }
 
 .plot {
   background: white;
-  margin: 20px auto;
+  margin: 20px;
   padding: 10px;
   border-radius: 10px;
+}
+
+.plot-holder {
+  margin-left: 20px;
 }
 
 .plot-title {
@@ -45,5 +56,5 @@ $plant-height: $plant-width;
 // }
 
 .container-fluid {
-  width: 110%;
+  width: 100%;
 }
