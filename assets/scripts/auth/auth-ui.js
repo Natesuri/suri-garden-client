@@ -1,7 +1,8 @@
 const userStore = require('../userStore.js')
+const plotEvents = require('../plot/event.js')
 
 const clearUserErrorMessage = function () {
-
+  $('#user-auth-message').text('')
 }
 
 // const hideShowAuth = function () {
@@ -30,6 +31,7 @@ const signUpSuccess = apiData => {
 
 const signUpFailure = apiData => {
   // Tell user to retry signup
+  $('#user-auth-message').text('Sign Up Failed. Please try again.')
   // console.error('signUpFailiure ran. Data is:', apiData)
 }
 
@@ -46,10 +48,14 @@ const signInSuccess = apiData => {
   // clear sign-in-form form
   $('.sign-in-form').val('')
   // console.log('signInSuccess ran. Data is:', apiData)
+
+  // initializePlots
+  plotEvents.initializePlots()
 }
 
 const signInFailure = apiData => {
   // tell the user about sign in failure
+  $('#user-auth-message').text('Login Failed. Please try again.')
 
   // console.error('signInFaliure ran. Data is:', apiData)
 }
@@ -106,6 +112,7 @@ const showSignUp = function (event) {
 }
 
 const hideForms = function () {
+  clearUserErrorMessage()
   if (!$('#sign-in').hasClass('hidden')) {
     $('#sign-in').toggleClass('hidden')
   }
