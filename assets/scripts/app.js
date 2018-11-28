@@ -12,5 +12,5 @@ const authEvents = require('./auth/auth-event.js')
 $(() => {
   authEvents.launchAuthModal()
   authEvents.addAuthEventHandlers()
-  events.initializePlots()
+  events.addEventHandlers()
 })

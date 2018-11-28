@@ -1,0 +1,10 @@
+{{#each plots as |plot|}}
+  {{log plot}}
+
+  <section data-id="{{plot.id}}">
+    <div>
+      <h1 data-id="{{plot.id}}"> <small>Title: {{plot.name}}</small></h1>
+    </div>
+  </section>
+
+{{/each}}

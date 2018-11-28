@@ -8,6 +8,17 @@ const initializePlots = function () {
     .catch()
 }
 
+const addEventHandlers = function () {
+  $('new-plot').on('click', onAddPlot)
+}
+
+const onAddPlot = function () {
+  api.addPlot()
+    .then()
+    .catch()
+}
+
 module.exports = {
-  initializePlots
+  initializePlots,
+  addEventHandlers
 }
