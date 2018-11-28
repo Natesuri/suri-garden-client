@@ -10,6 +10,14 @@ $plant-height: $plant-width;
   height: inherit;
 }
 
+.hidden {
+  display: none;
+}
+
+.form-button {
+  margin: 10px;
+}
+
 .main {
   padding: 0;
   margin: 0;

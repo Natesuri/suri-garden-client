@@ -4,14 +4,16 @@ const authApi = require('../auth/auth-api.js')
 const authUi = require('../auth/auth-ui.js')
 
 const launchAuthModal = function () {
-  $('#authModal').modal('show').modal({
-    keyboard: false,
-    backdrop: 'static'
-  })
+  $('#authModal').modal('show')
 }
 
 const addAuthEventHandlers = function () {
-
+  $('#launch-sign-up').on('click', authUi.showSignUp)
+  $('#launch-sign-in').on('click', authUi.showSignIn)
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#sign-out').on('click', onSignOut)
+  $('#change-password').on('submit', onChangePassword)
 }
 
 const onSignUp = event => {

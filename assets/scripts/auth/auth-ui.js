@@ -15,6 +15,11 @@ const clearUserErrorMessage = function () {
 const signUpSuccess = apiData => {
   userStore.user = apiData
   // Need user message to say sign up successful
+  $('#user-auth-message').text('Sign Up Succesful. Please Sign In')
+
+  // switch to sign in
+  hideForms()
+  $('#sign-in').toggleClass('hidden')
 
   // clear error message
   clearUserErrorMessage()
@@ -33,6 +38,7 @@ const signInSuccess = apiData => {
   const userName = userStore.user.user.email
   // welcome message for user
   console.log(userName)
+  $('#authModal').modal('hide')
 
   // clear any error message
   clearUserErrorMessage()
@@ -85,6 +91,29 @@ const changePasswordFailure = function (apiData) {
   $('.pass-form').val('')
 }
 
+const showSignIn = function (event) {
+  event.preventDefault()
+  console.log(event)
+  hideForms()
+  $('#sign-in').toggleClass('hidden')
+}
+
+const showSignUp = function (event) {
+  event.preventDefault()
+  console.log(event)
+  hideForms()
+  $('#sign-up').toggleClass('hidden')
+}
+
+const hideForms = function () {
+  if (!$('#sign-in').hasClass('hidden')) {
+    $('#sign-in').toggleClass('hidden')
+  }
+  if (!$('#sign-up').hasClass('hidden')) {
+    $('#sign-up').toggleClass('hidden')
+  }
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -93,5 +122,7 @@ module.exports = {
   changePasswordSuccess,
   signInFailure,
   signOutFailure,
-  changePasswordFailure
+  changePasswordFailure,
+  showSignIn,
+  showSignUp
 }

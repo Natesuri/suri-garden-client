@@ -86,12 +86,38 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="AuthModalLabel">Sign Up or Sign In</h5>
+                  </div>
+                    <!-- <div class='w-100'></div> -->
                     <!-- <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&otimes;</span>
                     </button> -->
-                  </div>
+
                   <div id='login' class="modal-body">
-                    Example
+                    <div id="user-auth-message"></div>
+                    <form id='sign-up' class='hidden'>
+                      <legend>Sign Up</legend>
+                      <label>Email</label>
+                      <input class='sign-up-form' name="credentials[email]" type="text">
+                      <div class='w-100'></div>
+                      <label>Password</label>
+                      <input class='sign-up-form' name="credentials[password]" type="password">
+                      <div class='w-100'></div>
+                      <label>Confirm password</label>
+                      <input class='sign-up-form' name="credentials[password_confirmation]" type="password">
+                      <input type="submit" value='Confirm'>
+                    </form>
+                    <form id='sign-in' class='hidden'>
+                      <legend>Sign In</legend>
+                      <label>Email</label>
+                      <input class='sign-in-form' name="credentials[email]" type="text">
+                      <div class='w-100'></div>
+                      <label>Password</label>
+                      <input class='sign-in-form' name="credentials[password]" type="password">
+                      <input type="submit" value='Login'>
+                    </form>
+                    <button id='launch-sign-up' class='btn btn-secondary form-button'>Sign Up</button>
+                    <!-- <div class='w-100'></div> -->
+                    <button id='launch-sign-in' class='btn btn-secondary form-button'>Sign In</button>
                   </div>
                   <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
