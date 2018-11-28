@@ -3,12 +3,12 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const authApi = require('../auth/auth-api.js')
 const authUi = require('../auth/auth-ui.js')
 
-// const launchAuthModal = function () {
-//   $('#authModal').modal('show').modal({
-//     keyboard: false,
-//     backdrop: 'static'
-//   })
-// }
+const launchAuthModal = function () {
+  $('#authModal').modal('show').modal({
+    keyboard: false,
+    backdrop: 'static'
+  })
+}
 
 const addAuthEventHandlers = function () {
 

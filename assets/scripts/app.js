@@ -7,7 +7,10 @@
 // require('./example')
 
 const events = require('./plot/event.js')
+const authEvents = require('./auth/auth-event.js')
 
 $(() => {
+  authEvents.launchAuthModal()
+  authEvents.addAuthEventHandlers()
   events.initializePlots()
 })
