@@ -4,6 +4,8 @@ const getPlotsSuccess = function (data) {
   console.log(data)
   const showPlotsHTML = showPlotsTemplate({plots: data.plots})
   $('.plot-holder').html(showPlotsHTML)
+  return 'promise'
+  // console.log('If you see me first, great.')
 }
 
 const showPlotAdder = function () {
