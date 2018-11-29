@@ -6,6 +6,22 @@ const getPlotsSuccess = function (data) {
   $('.plot-holder').html(showPlotsHTML)
 }
 
+const showPlotAdder = function () {
+  $('#newPlotModal').modal('show')
+}
+
+const hidePlotAdder = function () {
+  $('#newPlotModal').modal('hide')
+}
+
+// Same as hidePlotAdder, but might work better later if functionality (like, now add plants, is added to it)
+// const createPlotSuccess = function () {
+//   $('#newPlotModal').modal('hide')
+// }
+
 module.exports = {
-  getPlotsSuccess
+  getPlotsSuccess,
+  showPlotAdder,
+  // createPlotSuccess,
+  hidePlotAdder
 }

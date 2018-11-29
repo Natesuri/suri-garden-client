@@ -48,7 +48,7 @@
         </div>
         <div id="plots" class="plots col-12 col-md-10">
           <div class="plots-heading row">
-            <div class="col align-self-center"><h2>Plots</h2></div>
+            <div class="col-1 align-self-center"><h2>Plots</h2></div><div class='col align-self-center'><button id='new-plot' class='btn'>Add New Plot</button></div>
           </div>
           <div id="plot-holder" class="plot-holder row">
             <!-- DUMMY DATA -->
@@ -60,8 +60,8 @@
                 <div class="plant"></div>
                 <div class="plant"></div>
               </div>
-            </div>
-            <div id="plot-example" class="plot">
+            </div> -->
+            <!-- <div id="plot-example" class="plot">
               <div id="plot-title" class="plot-title"><h6>Kitchen Window</h6></div>
               <div id="plant-holder" class="plant-holder row">
                 <div class="plant"></div>
@@ -122,6 +122,42 @@
                   <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
                   </div> -->
+                </div>
+              </div>
+            </div>
+
+            <div class='modal fade' id='newPlotModal'>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="NewPlotModalLabel">Make a New Plot</h5>
+                    <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&otimes;</span>
+                    </button>
+                  </div>
+                  <div id='new-plot' class="modal-body">
+                    <form id='confirm-new-plot'>
+                      <label>Name</label>
+                      <input class='new-plot-name' name="plot[name]" type="text">
+                      <div class='w-100'></div>
+                      <label>Size</label>
+                      <input class='new-plot-size' name="plot[size]" type="text">
+                      <div class='w-100'></div>
+                      <label>Brightness</label>
+                      <input class='new-plot-brightness' name="plot[brightness]" type="text">
+                      <div class='w-100'></div>
+                      <label>Climate</label>
+                      <input class='new-plot-climate' name="plot[climate]" type="text">
+                      <div class='w-100'></div>
+                      <label>Notes</label>
+                      <input class='new-plot-notes' name="plot[notes]" type="text">
+                      <div class='w-100'></div>
+                      <input type="submit" value='Confirm'>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
             </div>
