@@ -19,6 +19,22 @@ const initializePlots = function () {
   // There must be a better way to do this.
 }
 
+const addPlotEventHandlers = function () {
+  $('#name').on('click', onUpdatePlot)
+  $('#size').on('click', onUpdatePlot)
+  $('#brightness').on('click', onUpdatePlot)
+  $('#climate').on('click', onUpdatePlot)
+  $('#notes').on('click', onUpdatePlot)
+  // editPlotEventHandlers()
+}
+
+// const editPlotEventHandlers = function () {
+//   $('#size').on('click', onUpdatePlot)
+//   $('#brightness').on('click', onUpdatePlot)
+//   $('#climate').on('click', onUpdatePlot)
+//   $('#notes').on('click', onUpdatePlot)
+// }
+
 const addEventHandlers = function () {
   $('#new-plot').on('click', showPlotForm)
   $('#confirm-new-plot').on('submit', onAddPlot)
@@ -40,9 +56,30 @@ const onAddPlot = function () {
 }
 
 const onGetPlot = function () {
-  console.log('you clicked me')
   const plotId = $(event.target).closest('section').data('id')
   console.log(`you clicked plot ${plotId}`)
+  api.getPlot(plotId)
+    .then(ui.getPlotSuccess)
+    .then(promise => addPlotEventHandlers())
+    .catch()
+}
+
+const onUpdatePlot = function () {
+  hideForms()
+  const plotId = $(event.target).closest('section').data('id')
+  const editAttr = event.target.id
+  event.preventDefault()
+  console.log(event)
+  console.log(editAttr)
+  console.log(`.edit-plot-${editAttr}`)
+  $(`.edit-plot-${editAttr}`).toggleClass('hidden')
+}
+
+const hideForms = function (editAttr) {
+  console.log('i toggled')
+  if (!$(`.edit-plot-${editAttr}`).hasClass('hidden')) {
+    $(`.edit-plot-${editAttr}`).toggleClass('hidden')
+  }
 }
 
 module.exports = {

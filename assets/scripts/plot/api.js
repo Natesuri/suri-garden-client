@@ -20,7 +20,17 @@ const addPlot = function (data) {
   })
 }
 
+const getPlot = function (plotId) {
+  const userToken = userStore.user.user.token
+  return $.ajax({
+    url: config.apiUrl + `/plots/${plotId}`,
+    method: 'GET',
+    headers: {Authorization: `Token token=${userToken}`}
+  })
+}
+
 module.exports = {
   getPlots,
-  addPlot
+  addPlot,
+  getPlot
 }

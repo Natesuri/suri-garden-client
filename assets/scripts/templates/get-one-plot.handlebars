@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="OnePlotModalLabel">{{plot.name}}</h5><button id='name' type="button" class="btn border">edit</button>
+  <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&otimes;</span>
+  </button>
+</div>
+<section data-id={{plot.id}} id='one-plot' class="modal-body">
+    <div class='hidden edit-plot edit-plot-name'><input class='' name="plot[name]" type="text"><input type="submit" value='Confirm'></div>
+  <!-- <div> -->
+    <div><h6 class="align-self-center">Size: {{plot.size}}</h6> <button id='size' type="button" class="btn border">edit</button></div>
+    <div class='hidden edit-plot edit-plot-size'><input class='' name="plot[size]" type="text"><input type="submit" value='Confirm'></div>
+    <div class='w-100'></div>
+    <div><h6 class="align-self-center">Brightness: {{plot.brightness}}</h6> <button id='brightness' type="button" class="btn border">edit</button></div>
+    <div class='hidden edit-plot edit-plot-brightness'><input class='' name="plot[brightness]" type="text"><input type="submit" value='Confirm'></div>
+    <div class='w-100'></div>
+    <div><h6 class="align-self-center">Climate: {{plot.climate}}</h6> <button id='climate' type="button" class="btn border">edit</button></div>
+    <div class='hidden edit-plot edit-plot-climate'><input class='' name="plot[climate]" type="text"><input type="submit" value='Confirm'></div>
+    <div class='w-100'></div>
+    <div><h6 class="align-self-center">Notes: {{plot.notes}}</h6> <button id='notes' type="button" class="btn border">edit</button></div>
+    <div class='hidden edit-plot edit-plot-notes'><input class='' name="plot[notes]" type="text"><input type="submit" value='Confirm'></div>
+  <!-- </div> -->
+
+</section>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+</div>
