@@ -25,8 +25,8 @@ const getPlotSuccess = function (apiData) {
   return 'promise'
 }
 
-const showPlotEditForm = function () {
-
+const updatePlotSuccess = function (data) {
+  getPlotSuccess(data)
 }
 
 // Same as hidePlotAdder, but might work better later if functionality (like, now add plants, is added to it)
@@ -39,5 +39,6 @@ module.exports = {
   showPlotAdder,
   // createPlotSuccess,
   hidePlotAdder,
-  getPlotSuccess
+  getPlotSuccess,
+  updatePlotSuccess
 }

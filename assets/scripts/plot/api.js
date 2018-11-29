@@ -11,6 +11,7 @@ const getPlots = function () {
 }
 
 const addPlot = function (data) {
+  console.log(data)
   const userToken = userStore.user.user.token
   return $.ajax({
     url: config.apiUrl + '/plots',
@@ -29,8 +30,19 @@ const getPlot = function (plotId) {
   })
 }
 
+const updatePlot = function (data, plotId) {
+  const userToken = userStore.user.user.token
+  return $.ajax({
+    url: config.apiUrl + `/plots/${plotId}`,
+    method: 'PATCH',
+    headers: {Authorization: `Token token=${userToken}`},
+    data: data
+  })
+}
+
 module.exports = {
   getPlots,
   addPlot,
-  getPlot
+  getPlot,
+  updatePlot
 }

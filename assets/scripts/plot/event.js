@@ -20,11 +20,16 @@ const initializePlots = function () {
 }
 
 const addPlotEventHandlers = function () {
-  $('#name').on('click', onUpdatePlot)
-  $('#size').on('click', onUpdatePlot)
-  $('#brightness').on('click', onUpdatePlot)
-  $('#climate').on('click', onUpdatePlot)
-  $('#notes').on('click', onUpdatePlot)
+  $('#name-edit').on('click', onEditPlotAttr)
+  $('#size-edit').on('click', onEditPlotAttr)
+  $('#brightness-edit').on('click', onEditPlotAttr)
+  $('#climate-edit').on('click', onEditPlotAttr)
+  $('#notes-edit').on('click', onEditPlotAttr)
+  $('#name').on('submit', onUpdatePlotAttr)
+  $('#size').on('submit', onUpdatePlotAttr)
+  $('#brightness').on('submit', onUpdatePlotAttr)
+  $('#climate').on('submit', onUpdatePlotAttr)
+  $('#notes').on('submit', onUpdatePlotAttr)
   // editPlotEventHandlers()
 }
 
@@ -64,23 +69,31 @@ const onGetPlot = function () {
     .catch()
 }
 
-const onUpdatePlot = function () {
-  hideForms()
-  const plotId = $(event.target).closest('section').data('id')
-  const editAttr = event.target.id
+const onEditPlotAttr = function () {
   event.preventDefault()
-  console.log(event)
+  // hideForms()
+  const editAttr = event.target.id
   console.log(editAttr)
-  console.log(`.edit-plot-${editAttr}`)
   $(`.edit-plot-${editAttr}`).toggleClass('hidden')
 }
 
-const hideForms = function (editAttr) {
-  console.log('i toggled')
-  if (!$(`.edit-plot-${editAttr}`).hasClass('hidden')) {
-    $(`.edit-plot-${editAttr}`).toggleClass('hidden')
-  }
+const onUpdatePlotAttr = function () {
+  event.preventDefault()
+  console.log('you clicked submit')
+  const data = getFormFields(event.target)
+  const plotId = $(event.target).closest('section').data('id')
+  // const updateAttr = event.target.id
+  api.updatePlot(data, plotId)
+    .then(ui.updatePlotSuccess)
+    .catch()
 }
+
+// const hideForms = function (editAttr) {
+//   console.log('i toggled')
+//   if (!$(`.edit-plot-${editAttr}`).hasClass('hidden')) {
+//     $(`.edit-plot-${editAttr}`).toggleClass('hidden')
+//   }
+// }
 
 module.exports = {
   initializePlots,
