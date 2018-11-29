@@ -2,7 +2,11 @@ const indexPlotsTemplate = require('../templates/get-plots.handlebars')
 const showPlotTemplate = require('../templates/get-one-plot.handlebars')
 
 const getPlotsSuccess = function (data) {
+// need to add username to Username Temp Spot
+
   console.log(data)
+  // later, will sort data by index
+
   const indexPlotsHTML = indexPlotsTemplate({plots: data.plots})
   $('.plot-holder').html(indexPlotsHTML)
   return 'promise'
@@ -26,7 +30,12 @@ const getPlotSuccess = function (apiData) {
 }
 
 const updatePlotSuccess = function (data) {
-  getPlotSuccess(data)
+  $('#onePlotModal').modal('hide')
+  $('#user-message').text('Plot updated successfully')
+}
+
+const clearUserMessage = function () {
+  $('#user-message').text('')
 }
 
 // Same as hidePlotAdder, but might work better later if functionality (like, now add plants, is added to it)
@@ -40,5 +49,6 @@ module.exports = {
   // createPlotSuccess,
   hidePlotAdder,
   getPlotSuccess,
-  updatePlotSuccess
+  updatePlotSuccess,
+  clearUserMessage
 }

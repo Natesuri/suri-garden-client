@@ -10,12 +10,13 @@ const ui = require('./ui.js')
 // }
 
 // Load users plots into the Plots page.
-const initializePlots = function () {
+const initializePlots = function (data) {
   api.getPlots()
     .then(ui.getPlotsSuccess)
     .then(promise => $('.plot').on('click', onGetPlot))
     .catch()
   ui.hidePlotAdder()
+  return data
   // There must be a better way to do this.
 }
 
@@ -47,6 +48,7 @@ const addEventHandlers = function () {
 }
 
 const showPlotForm = function () {
+  ui.clearUserMessage()
   ui.showPlotAdder()
 }
 
@@ -61,6 +63,7 @@ const onAddPlot = function () {
 }
 
 const onGetPlot = function () {
+  ui.clearUserMessage()
   const plotId = $(event.target).closest('section').data('id')
   console.log(`you clicked plot ${plotId}`)
   api.getPlot(plotId)
@@ -71,7 +74,8 @@ const onGetPlot = function () {
 
 const onEditPlotAttr = function () {
   event.preventDefault()
-  // hideForms()
+  ui.clearUserMessage()
+  hideForms()
   const editAttr = event.target.id
   console.log(editAttr)
   $(`.edit-plot-${editAttr}`).toggleClass('hidden')
@@ -84,16 +88,29 @@ const onUpdatePlotAttr = function () {
   const plotId = $(event.target).closest('section').data('id')
   // const updateAttr = event.target.id
   api.updatePlot(data, plotId)
-    .then(ui.updatePlotSuccess)
+    .then(initializePlots())
+    .then(ui.updatePlotSuccess())
     .catch()
 }
 
-// const hideForms = function (editAttr) {
-//   console.log('i toggled')
-//   if (!$(`.edit-plot-${editAttr}`).hasClass('hidden')) {
-//     $(`.edit-plot-${editAttr}`).toggleClass('hidden')
-//   }
-// }
+const hideForms = function (editAttr) {
+  console.log('i toggled')
+  if (!$(`.edit-plot-name-edit`).hasClass('hidden')) {
+    $(`.edit-plot-name-edit`).toggleClass('hidden')
+  }
+  if (!$(`.edit-plot-size-edit`).hasClass('hidden')) {
+    $(`.edit-plot-size-edit`).toggleClass('hidden')
+  }
+  if (!$(`.edit-plot-brightness-edit`).hasClass('hidden')) {
+    $(`.edit-plot-brightness-edit`).toggleClass('hidden')
+  }
+  if (!$(`.edit-plot-climate-edit`).hasClass('hidden')) {
+    $(`.edit-plot-climate-edit`).toggleClass('hidden')
+  }
+  if (!$(`.edit-plot-notes-edit`).hasClass('hidden')) {
+    $(`.edit-plot-notes-edit`).toggleClass('hidden')
+  }
+}
 
 module.exports = {
   initializePlots,
