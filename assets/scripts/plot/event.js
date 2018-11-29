@@ -2,22 +2,15 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
-// const onGetAllPlots = function () {
-//   // return api.getPlots()
-//   //   .then(ui.getPlotsSuccess)
-//   //   .then(console.log('see me second'))
-//   //   .catch()
-// }
-
 // Load users plots into the Plots page.
 const initializePlots = function (data) {
   api.getPlots()
     .then(ui.getPlotsSuccess)
     .then(promise => $('.plot').on('click', onGetPlot))
     .catch()
+  // There must be a better way to do this.
   ui.hidePlotAdder()
   return data
-  // There must be a better way to do this.
 }
 
 const addPlotEventHandlers = function () {
@@ -31,15 +24,8 @@ const addPlotEventHandlers = function () {
   $('#brightness').on('submit', onUpdatePlotAttr)
   $('#climate').on('submit', onUpdatePlotAttr)
   $('#notes').on('submit', onUpdatePlotAttr)
-  // editPlotEventHandlers()
+  $('#delete-plot').on('click', onDeletePlot)
 }
-
-// const editPlotEventHandlers = function () {
-//   $('#size').on('click', onUpdatePlot)
-//   $('#brightness').on('click', onUpdatePlot)
-//   $('#climate').on('click', onUpdatePlot)
-//   $('#notes').on('click', onUpdatePlot)
-// }
 
 const addEventHandlers = function () {
   $('#new-plot').on('click', showPlotForm)
@@ -88,8 +74,18 @@ const onUpdatePlotAttr = function () {
   const plotId = $(event.target).closest('section').data('id')
   // const updateAttr = event.target.id
   api.updatePlot(data, plotId)
-    .then(initializePlots())
-    .then(ui.updatePlotSuccess())
+    .then(data => initializePlots())
+    .then(promise => ui.updatePlotSuccess())
+    .catch()
+}
+
+const onDeletePlot = function () {
+  event.preventDefault()
+  const plotId = $(event.target).closest('section').data('id')
+  const plotName = $(event.target).closest('button').data('name')
+  api.deletePlot(plotId)
+    .then(data => initializePlots())
+    .then(promise => ui.deletePlotSuccess(plotName))
     .catch()
 }
 
