@@ -1,5 +1,6 @@
 const indexPlotsTemplate = require('../templates/get-plots.handlebars')
 const showPlotTemplate = require('../templates/get-one-plot.handlebars')
+const userStore = require('../userStore.js')
 
 const getPlotsSuccess = function (data) {
 // need to add username to Username Temp Spot

@@ -40,6 +40,7 @@ const signInSuccess = apiData => {
   const userName = userStore.user.user.email
   // welcome message for user
   console.log(userName)
+  $('#username').text(userName)
   $('#authModal').modal('hide')
 
   // clear any error message
@@ -84,6 +85,9 @@ const signOutFailure = function (apiData) {
 
 const changePasswordSuccess = function (apiData) {
   // tell user about password change success
+  $('#user-message').text('Change Password Succesful')
+  $('#userModal').modal('hide')
+  $('#change-password-form').modal('hide')
 
   // clear password form
   $('.pass-form').val('')

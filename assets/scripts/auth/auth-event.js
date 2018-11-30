@@ -13,7 +13,9 @@ const addAuthEventHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('click', onSignOut)
-  $('#change-password').on('submit', onChangePassword)
+  $('#launch-change-password').on('click', setChangePassword)
+  $('#change-password-form').on('submit', onChangePassword)
+  $('#user-options').on('click', openUserMenu)
 }
 
 const onSignUp = event => {
@@ -45,12 +47,21 @@ const onSignOut = event => {
     .catch(authUi.signOutFailure)
 }
 
+const setChangePassword = function () {
+  // $('userModal').modal('hide')
+  $('#change-password-form').modal('show')
+}
+
 const onChangePassword = event => {
   event.preventDefault()
   const data = getFormFields(event.target)
   authApi.changePassword(data)
     .then(authUi.changePasswordSuccess)
     .catch(authUi.changePasswordFailure)
+}
+
+const openUserMenu = function () {
+  $('#userModal').modal('show')
 }
 
 module.exports = {
