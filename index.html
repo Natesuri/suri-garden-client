@@ -15,8 +15,8 @@
       <div id="main" class="container-fluid row main">
         <div id="side-bar" class="sidebar col-12 col-md-2">
           <div id="top" class="row top">
-            <div id="username" class="col-8 align-self-center"><h2>Username</h2></div>
-            <div id="menu" class="col-4 align-self-center"><button class="btn btn-md">Menu</button></div>
+            <div class="col-8 align-self-center"><h2 id="username"></h2></div>
+            <div id="menu" class="col-4 align-self-center"><button id='user-options' class="btn btn-md">Menu</button></div>
           </div>
           <div id="reminders">
             <div id="reminders-heading" class="row">
@@ -169,6 +169,35 @@
                 </div>
               </div>
             </div>
+            <div class='modal fade' id='userModal' data-backdrop="static" data-keyboard=false>
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="userModalLabel">User Menu</h5>
+                          <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&otimes;</span>
+                          </button>
+                        </div>
+                        <div id='user-menu' class="modal-body">
+                          <button id='launch-change-password' class='btn btn-secondary form-button'>Change Password</button>
+                          <form id='change-password-form' class='hidden'>
+                            <legend>Change Password</legend>
+                            <label>Old Password</label>
+                            <input class='pass-form' name='passwords[old]' type='password'>
+                            <div class='w-100'></div>
+                            <label>New Password</label>
+                            <input class='pass-form' name='passwords[new]' type='password'>
+                            <input type="submit" value='Confirm'>
+                          </form>
+                          <!-- <div class='w-100'></div> -->
+                          <button id='sign-out' class='btn btn-secondary form-button'>Sign Out</button>
+                        </div>
+                        <!-- <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
       <!-- <footer></footer> -->
     </body>
 </html>
