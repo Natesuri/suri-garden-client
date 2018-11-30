@@ -44,6 +44,7 @@ const onSignOut = event => {
   event.preventDefault()
   authApi.signOut()
     .then(authUi.signOutSuccess)
+    .then(promise => launchAuthModal())
     .catch(authUi.signOutFailure)
 }
 

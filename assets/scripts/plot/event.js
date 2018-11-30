@@ -4,6 +4,7 @@ const ui = require('./ui.js')
 
 // Load users plots into the Plots page.
 const initializePlots = function (data) {
+  ui.clearUserMessage()
   api.getPlots()
     .then(ui.getPlotsSuccess)
     .then(promise => $('.plot').on('click', onGetPlot))

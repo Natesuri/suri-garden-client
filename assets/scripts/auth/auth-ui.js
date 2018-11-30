@@ -63,9 +63,12 @@ const signInFailure = apiData => {
 
 const signOutSuccess = function (apiData) {
   // Tell user they've signed out
+  $('#user-message').text('Sign Out Succesful')
+  $('#userModal').modal('hide')
+  $('#plot-holder').text('')
 
   // clear error messages
-  clearUserErrorMessage()
+  // clearUserErrorMessage()
 
   // clear any message
 
@@ -73,6 +76,7 @@ const signOutSuccess = function (apiData) {
 
   // clear user store
   userStore.user = {}
+  return 'promise'
 }
 
 const signOutFailure = function (apiData) {
