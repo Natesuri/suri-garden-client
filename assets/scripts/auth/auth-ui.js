@@ -5,13 +5,10 @@ const clearUserErrorMessage = function () {
   $('#user-auth-message').text('')
 }
 
-// const hideShowAuth = function () {
-// $('#sign-up').toggleClass('hidden')
-// $('#sign-in').toggleClass('hidden')
-// $('#sign-out').toggleClass('hidden')
-// $('#change-password').toggleClass('hidden')
-// $('#get-history').toggleClass('hidden')
-// }
+const clearUserForms = function () {
+  $('.sign-up-form').val('')
+  $('.sign-in-form').val('')
+}
 
 const signUpSuccess = apiData => {
   userStore.user = apiData
@@ -26,7 +23,7 @@ const signUpSuccess = apiData => {
   clearUserErrorMessage()
 
   // clear sign-up-form
-  $('.sign-up-form').val('')
+  clearUserForms()
 }
 
 const signUpFailure = apiData => {
@@ -40,14 +37,15 @@ const signInSuccess = apiData => {
   const userName = userStore.user.user.email
   // welcome message for user
   console.log(userName)
-  $('#username').text(userName)
+  $('#username').text('Welcome!')
+  $('#userModalLabel').text(userName)
   $('#authModal').modal('hide')
 
   // clear any error message
   clearUserErrorMessage()
 
   // clear sign-in-form form
-  $('.sign-in-form').val('')
+  clearUserForms()
   // console.log('signInSuccess ran. Data is:', apiData)
 
   // initializePlots
@@ -63,9 +61,11 @@ const signInFailure = apiData => {
 
 const signOutSuccess = function (apiData) {
   // Tell user they've signed out
-  $('#user-message').text('Sign Out Succesful')
+  $('#username').text('See you soon!')
   $('#userModal').modal('hide')
   $('#plot-holder').text('')
+
+  clearAfterTime()
 
   // clear error messages
   // clearUserErrorMessage()
@@ -77,6 +77,12 @@ const signOutSuccess = function (apiData) {
   // clear user store
   userStore.user = {}
   return 'promise'
+}
+
+const clearAfterTime = function () {
+  setTimeout(() => {
+    $('#username').text('')
+  }, 4000)
 }
 
 const signOutFailure = function (apiData) {
