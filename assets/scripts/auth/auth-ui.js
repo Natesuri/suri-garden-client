@@ -1,5 +1,5 @@
 const userStore = require('../userStore.js')
-const plotEvents = require('../plot/event.js')
+// const plotEvents = require('../plot/event.js')
 
 const clearUserErrorMessage = function () {
   $('#user-auth-message').text('')
@@ -36,7 +36,7 @@ const signInSuccess = apiData => {
   userStore.user = apiData
   const userName = userStore.user.user.email
   // welcome message for user
-  console.log(userName)
+  // console.log(userName)
   $('#username').text('Welcome!')
   $('#userModalLabel').text(userName)
   $('#authModal').modal('hide')
@@ -49,7 +49,8 @@ const signInSuccess = apiData => {
   // console.log('signInSuccess ran. Data is:', apiData)
 
   // initializePlots
-  plotEvents.initializePlots()
+  // plotEvents.initializePlots()
+  return ''
 }
 
 const signInFailure = apiData => {
@@ -76,7 +77,7 @@ const signOutSuccess = function (apiData) {
 
   // clear user store
   userStore.user = {}
-  return 'promise'
+  return ''
 }
 
 const clearAfterTime = function () {
@@ -113,7 +114,7 @@ const changePasswordFailure = function (apiData) {
 
 const showSignIn = function (event) {
   event.preventDefault()
-  console.log(event)
+  // console.log(event)
   hideForms()
   $('#sign-in').toggleClass('hidden')
   clearUserForms()
@@ -121,7 +122,7 @@ const showSignIn = function (event) {
 
 const showSignUp = function (event) {
   event.preventDefault()
-  console.log(event)
+  // console.log(event)
   hideForms()
   $('#sign-up').toggleClass('hidden')
   clearUserForms()

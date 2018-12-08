@@ -11,7 +11,7 @@ const initializePlots = function (data) {
     .catch()
   // There must be a better way to do this.
   ui.hidePlotAdder()
-  return data
+  return ''
 }
 
 const addPlotEventHandlers = function () {
@@ -43,7 +43,7 @@ const onAddPlot = function () {
   event.preventDefault()
   // console.log(event)
   const data = getFormFields(event.target)
-  console.log(data)
+  // console.log(data)
   api.addPlot(data)
     .then(initializePlots)
     .catch()
@@ -52,7 +52,7 @@ const onAddPlot = function () {
 const onGetPlot = function () {
   ui.clearUserMessage()
   const plotId = $(event.target).closest('section').data('id')
-  console.log(`you clicked plot ${plotId}`)
+  // console.log(`you clicked plot ${plotId}`)
   api.getPlot(plotId)
     .then(ui.getPlotSuccess)
     .then(addPlotEventHandlers)
@@ -64,13 +64,13 @@ const onEditPlotAttr = function () {
   ui.clearUserMessage()
   hideForms()
   const editAttr = event.target.id
-  console.log(editAttr)
+  // console.log(editAttr)
   $(`.edit-plot-${editAttr}`).toggleClass('hidden')
 }
 
 const onUpdatePlotAttr = function () {
   event.preventDefault()
-  console.log('you clicked submit')
+  // console.log('you clicked submit')
   const data = getFormFields(event.target)
   const plotId = $(event.target).closest('section').data('id')
   // const updateAttr = event.target.id
@@ -91,7 +91,7 @@ const onDeletePlot = function () {
 }
 
 const hideForms = function (editAttr) {
-  console.log('i toggled')
+  // console.log('i toggled')
   if (!$(`.edit-plot-name-edit`).hasClass('hidden')) {
     $(`.edit-plot-name-edit`).toggleClass('hidden')
   }

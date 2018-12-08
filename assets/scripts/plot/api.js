@@ -11,7 +11,7 @@ const getPlots = function () {
 }
 
 const addPlot = function (data) {
-  console.log(data)
+  // console.log(data)
   const userToken = userStore.user.user.token
   return $.ajax({
     url: config.apiUrl + '/plots',

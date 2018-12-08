@@ -1,5 +1,6 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 
+const plotEvents = require('../plot/event.js')
 const authApi = require('../auth/auth-api.js')
 const authUi = require('../auth/auth-ui.js')
 
@@ -37,6 +38,7 @@ const onSignIn = event => {
   // console.log(data)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
+    .then(plotEvents.initializePlots)
     .catch(authUi.signInFailure)
 }
 
@@ -44,7 +46,7 @@ const onSignOut = event => {
   event.preventDefault()
   authApi.signOut()
     .then(authUi.signOutSuccess)
-    .then(promise => launchAuthModal())
+    .then(launchAuthModal)
     .catch(authUi.signOutFailure)
 }
 
