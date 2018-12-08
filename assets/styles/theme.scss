@@ -12,6 +12,15 @@ body {
   background: $plot-background;
 }
 
+label {
+  padding: 10px 0;
+}
+
+.error {
+  font-size: 100%;
+  color: red;
+}
+
 .plots {
   background: $plot-background;
   height: inherit;

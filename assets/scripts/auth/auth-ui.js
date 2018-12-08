@@ -3,6 +3,9 @@ const userStore = require('../userStore.js')
 
 const clearUserErrorMessage = function () {
   $('#user-auth-message').text('')
+  $('#sign-up-email-error').text('')
+  $('#sign-up-password-error').text('')
+  $('#sign-up-password_confirmation-error').text('')
 }
 
 const clearUserForms = function () {
@@ -27,8 +30,13 @@ const signUpSuccess = apiData => {
 }
 
 const signUpFailure = apiData => {
+  clearUserErrorMessage()
   // Tell user to retry signup
   $('#user-auth-message').text('Sign Up Failed. Please try again.')
+  console.error(apiData.responseJSON.email)
+  $('#sign-up-email-error').text(apiData.responseJSON.email)
+  $('#sign-up-password-error').text(apiData.responseJSON.password)
+  $('#sign-up-password_confirmation-error').text(apiData.responseJSON.password_confirmation)
   // console.error('signUpFailiure ran. Data is:', apiData)
 }
 
@@ -56,6 +64,7 @@ const signInSuccess = apiData => {
 const signInFailure = apiData => {
   // tell the user about sign in failure
   $('#user-auth-message').text('Login Failed. Please try again.')
+  console.error(apiData)
 
   // console.error('signInFaliure ran. Data is:', apiData)
 }

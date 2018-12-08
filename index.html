@@ -62,15 +62,32 @@
                     <div id="user-auth-message"></div>
                     <form id='sign-up' class='hidden'>
                       <legend>Sign Up</legend>
-                      <label>Email</label>
-                      <input class='sign-up-form' name="credentials[email]" type="text">
+                      <div>
+                        <div>
+                          <label>Email</label>
+                          <div id=sign-up-email-error class='error'></div>
+                        </div>
+                        <input class='sign-up-form' name="credentials[email]" type="text">
+                      </div>
                       <div class='w-100'></div>
-                      <label>Password</label>
-                      <input class='sign-up-form' name="credentials[password]" type="password">
+                      <div>
+                        <div>
+                          <label>Password</label>
+                          <div id=sign-up-password-error class='error'></div>
+                        </div>
+                        <input class='sign-up-form' name="credentials[password]" type="password">
+                      </div>
                       <div class='w-100'></div>
-                      <label>Confirm password</label>
-                      <input class='sign-up-form' name="credentials[password_confirmation]" type="password">
-                      <input type="submit" value='Confirm'>
+                      <div>
+                        <div>
+                          <label>Confirm password</label>
+                          <div id=sign-up-password_confirmation-error class='error'></div>
+                        </div>
+                        <input class='sign-up-form' name="credentials[password_confirmation]" type="password">
+                        <input type="submit" value='Confirm'>
+                      </div>
+                      <div class='w-100'></div>
+
                     </form>
                     <form id='sign-in' class='hidden'>
                       <legend>Sign In</legend>
