@@ -3,6 +3,7 @@ $plant-height: $plant-width;
 
 .sidebar {
   background-color: $sidebar-background;
+  // position: fixed;
   // height: inherit;
   // height: 100%;
 }
@@ -14,6 +15,9 @@ body {
 .plots {
   background: $plot-background;
   height: inherit;
+  // this allows the div within the container to scroll on the y axis if
+  // it overflows the size of it's container.
+  overflow-y: scroll;
 }
 
 .hidden {
