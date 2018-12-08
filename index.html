@@ -4,10 +4,8 @@
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
@@ -28,19 +26,9 @@
               <div id="alerts">
                 <div id="harvesting-reminder" class="harvest-reminder">
                   <div id="harvest-heading" class="col"><h4>Harvest</h4></div>
-                  <!-- DUMMY DATA -->
-                  <!-- <div class="col">
-                    <p>Example</p>
-                  </div>
-                  <div class="col"><p>Example</p></div>
-                  <div class="col"><p>Example</p></div> -->
                 </div>
                 <div id="watering-reminder" class="">
                   <div id="water-heading" class="col"><h4>Water</h4></div>
-                  <!-- DUMMY DATA -->
-                  <!-- <div class="col"><p>Example</p></div>
-                  <div class="col"><p>Example</p></div>
-                  <div class="col"><p>Example</p></div> -->
                 </div>
               </div>
             </div>
@@ -48,36 +36,13 @@
         </div>
         <div id="plots" class="plots col-12 col-lg-10">
           <div class="plots-heading row">
-            <div class="col-1 align-self-center"><h2>Plots</h2></div><div class='col offset-2 offset-sm-1 align-self-center'><button id='new-plot' class='btn'>Add New Plot</button></div>
+            <div class="col-1 align-self-center"><h2>Plots</h2></div>
+            <div class='col offset-2 offset-sm-1 align-self-center'>
+              <button id='new-plot-launcher' class='btn'>Add New Plot</button>
+            </div>
           </div>
           <div id="user-message"></div>
           <div id="plot-holder" class="plot-holder row">
-            <!-- DUMMY DATA -->
-            <!-- <div id="plot-example" class="plot">
-              <div id="plot-title" class="plot-title"><h6>Kitchen Window</h6></div>
-              <div id="plant-holder" class="plant-holder row">
-                <div class="plant"></div>
-                <div class="plant"></div>
-                <div class="plant"></div>
-                <div class="plant"></div>
-              </div>
-            </div> -->
-            <!-- <div id="plot-example" class="plot">
-              <div id="plot-title" class="plot-title"><h6>Kitchen Window</h6></div>
-              <div id="plant-holder" class="plant-holder row">
-                <div class="plant"></div>
-                <div class="plant"></div>
-                <div class="plant"></div>
-              </div>
-            </div>
-            <div id="plot-example" class="plot">
-              <div id="plot-title" class="plot-title"><h6>Kitchen Window</h6></div>
-              <div id="plant-holder" class="plant-holder row">
-                <div class="plant"></div>
-                <div class="plant"></div>
-                <div class="plant"></div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -88,11 +53,6 @@
                   <div class="modal-header">
                     <h5 class="modal-title" id="AuthModalLabel">Sign Up or Sign In</h5>
                   </div>
-                    <!-- <div class='w-100'></div> -->
-                    <!-- <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&otimes;</span>
-                    </button> -->
-
                   <div id='login' class="modal-body">
                     <div id="user-auth-message"></div>
                     <form id='sign-up' class='hidden'>
@@ -117,12 +77,8 @@
                       <input type="submit" value='Login'>
                     </form>
                     <button id='launch-sign-up' class='btn btn-secondary form-button'>Sign Up</button>
-                    <!-- <div class='w-100'></div> -->
                     <button id='launch-sign-in' class='btn btn-secondary form-button'>Sign In</button>
                   </div>
-                  <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -189,7 +145,6 @@
                             <input class='pass-form' name='passwords[new]' type='password'>
                             <input type="submit" value='Confirm'>
                           </form>
-                          <!-- <div class='w-100'></div> -->
                           <button id='sign-out' class='btn btn-secondary form-button'>Sign Out</button>
                         </div>
                         <!-- <div class="modal-footer">
@@ -198,6 +153,5 @@
                       </div>
                     </div>
                   </div>
-      <!-- <footer></footer> -->
     </body>
 </html>

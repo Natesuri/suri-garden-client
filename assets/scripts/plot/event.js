@@ -29,7 +29,7 @@ const addPlotEventHandlers = function () {
 }
 
 const addEventHandlers = function () {
-  $('#new-plot').on('click', showPlotForm)
+  $('#new-plot-launcher').on('click', showPlotForm)
   $('#confirm-new-plot').on('submit', onAddPlot)
   // on plot click, open modal which lists plot attr. v2, list plants.
 }
