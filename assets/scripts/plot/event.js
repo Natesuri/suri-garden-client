@@ -7,7 +7,7 @@ const initializePlots = function (data) {
   ui.clearUserMessage()
   api.getPlots()
     .then(ui.getPlotsSuccess)
-    .then(promise => $('.plot').on('click', onGetPlot))
+    .then(() => $('.plot').on('click', onGetPlot))
     .catch()
   // There must be a better way to do this.
   ui.hidePlotAdder()
@@ -45,7 +45,7 @@ const onAddPlot = function () {
   const data = getFormFields(event.target)
   console.log(data)
   api.addPlot(data)
-    .then(initializePlots())
+    .then(initializePlots)
     .catch()
 }
 
@@ -55,7 +55,7 @@ const onGetPlot = function () {
   console.log(`you clicked plot ${plotId}`)
   api.getPlot(plotId)
     .then(ui.getPlotSuccess)
-    .then(promise => addPlotEventHandlers())
+    .then(addPlotEventHandlers)
     .catch()
 }
 
@@ -75,8 +75,8 @@ const onUpdatePlotAttr = function () {
   const plotId = $(event.target).closest('section').data('id')
   // const updateAttr = event.target.id
   api.updatePlot(data, plotId)
-    .then(data => initializePlots())
-    .then(promise => ui.updatePlotSuccess())
+    .then(initializePlots)
+    .then(ui.updatePlotSuccess)
     .catch()
 }
 
@@ -85,8 +85,8 @@ const onDeletePlot = function () {
   const plotId = $(event.target).closest('section').data('id')
   const plotName = $(event.target).closest('button').data('name')
   api.deletePlot(plotId)
-    .then(data => initializePlots())
-    .then(promise => ui.deletePlotSuccess(plotName))
+    .then(initializePlots)
+    .then(() => ui.deletePlotSuccess(plotName))
     .catch()
 }
 
