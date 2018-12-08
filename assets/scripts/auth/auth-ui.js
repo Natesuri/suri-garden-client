@@ -116,6 +116,7 @@ const showSignIn = function (event) {
   console.log(event)
   hideForms()
   $('#sign-in').toggleClass('hidden')
+  clearUserForms()
 }
 
 const showSignUp = function (event) {
@@ -123,6 +124,7 @@ const showSignUp = function (event) {
   console.log(event)
   hideForms()
   $('#sign-up').toggleClass('hidden')
+  clearUserForms()
 }
 
 const hideForms = function () {
