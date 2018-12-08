@@ -6,6 +6,8 @@ const clearUserErrorMessage = function () {
   $('#sign-up-email-error').text('')
   $('#sign-up-password-error').text('')
   $('#sign-up-password_confirmation-error').text('')
+  $('#sign-in-error').text('')
+  $('#sign-up-error').text('')
 }
 
 const clearUserForms = function () {
@@ -14,29 +16,31 @@ const clearUserForms = function () {
 }
 
 const signUpSuccess = apiData => {
+  // clear forms
+  clearUserForms()
+  // clear error message
+  clearUserErrorMessage()
   userStore.user = apiData
-  // Need user message to say sign up successful
-  $('#user-auth-message').text('Sign Up Succesful. Please Sign In')
 
   // switch to sign in
   hideForms()
   $('#sign-in').toggleClass('hidden')
-
-  // clear error message
-  clearUserErrorMessage()
-
-  // clear sign-up-form
-  clearUserForms()
+  // Need user message to say sign up successful
+  $('#user-auth-message').text('Sign Up Succesful. Please Sign In')
 }
 
 const signUpFailure = apiData => {
   clearUserErrorMessage()
   // Tell user to retry signup
-  $('#user-auth-message').text('Sign Up Failed. Please try again.')
-  console.error(apiData.responseJSON.email)
-  $('#sign-up-email-error').text(apiData.responseJSON.email)
-  $('#sign-up-password-error').text(apiData.responseJSON.password)
-  $('#sign-up-password_confirmation-error').text(apiData.responseJSON.password_confirmation)
+  // $('#user-auth-message').text('Sign Up Failed. Please try again.')
+  console.error(apiData)
+  if (apiData.statusText === 'error') {
+    $('#sign-up-error').text('Something went wrong. Please try again')
+  } else {
+    $('#sign-up-email-error').text(apiData.responseJSON.email)
+    $('#sign-up-password-error').text(apiData.responseJSON.password)
+    $('#sign-up-password_confirmation-error').text(apiData.responseJSON.password_confirmation)
+  }
   // console.error('signUpFailiure ran. Data is:', apiData)
 }
 
@@ -62,10 +66,16 @@ const signInSuccess = apiData => {
 }
 
 const signInFailure = apiData => {
+  clearUserErrorMessage()
   // tell the user about sign in failure
-  $('#user-auth-message').text('Login Failed. Please try again.')
+  // $('#user-auth-message').text('Login Failed. Please try again.')
   console.error(apiData)
-
+  if (apiData.statusText === 'Unauthorized') {
+    $('#sign-in-error').text('Email password combination is incorrect')
+  }
+  if (apiData.statusText === 'error') {
+    $('#sign-in-error').text('Something went wrong. Please try again')
+  }
   // console.error('signInFaliure ran. Data is:', apiData)
 }
 
