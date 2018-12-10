@@ -41,7 +41,7 @@ const updatePlot = function (data, plotId) {
 }
 
 const deletePlot = function (plotId) {
-  console.log('I should run before init plot')
+  // console.log('I should run before init plot')
   const userToken = userStore.user.user.token
   return $.ajax({
     url: config.apiUrl + `/plots/${plotId}`,

@@ -33,7 +33,7 @@ const signUpFailure = apiData => {
   clearUserErrorMessage()
   // Tell user to retry signup
   // $('#user-auth-message').text('Sign Up Failed. Please try again.')
-  console.error(apiData)
+  // console.error(apiData)
   if (apiData.statusText === 'error') {
     $('#sign-up-error').text('Something went wrong. Please try again')
   } else {
@@ -69,7 +69,7 @@ const signInFailure = apiData => {
   clearUserErrorMessage()
   // tell the user about sign in failure
   // $('#user-auth-message').text('Login Failed. Please try again.')
-  console.error(apiData)
+  // console.error(apiData)
   if (apiData.statusText === 'Unauthorized') {
     $('#sign-in-error').text('Email password combination is incorrect')
   }
@@ -122,7 +122,7 @@ const changePasswordSuccess = function (apiData) {
 
 const changePasswordFailure = function (apiData) {
   // tell user of pass change failure
-  console.log(apiData)
+  // console.log(apiData)
 
   // clear password form
   $('.pass-form').val('')

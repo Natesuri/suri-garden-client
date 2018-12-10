@@ -41,7 +41,7 @@ const clearUserMessage = function () {
 }
 
 const deletePlotSuccess = function (plotName) {
-  console.log(plotName)
+  // console.log(plotName)
   $('#onePlotModal').modal('hide')
   $('#user-message').text(`${plotName} Deleted successfully`)
 }
