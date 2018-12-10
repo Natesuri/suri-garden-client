@@ -14,7 +14,7 @@ const addAuthEventHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('click', onSignOut)
-  $('#launch-change-password').on('click', setChangePassword)
+  $('#launch-change-password').on('click', authUi.showChangePassword)
   $('#change-password-form').on('submit', onChangePassword)
   $('#user-options').on('click', openUserMenu)
 }
@@ -50,10 +50,10 @@ const onSignOut = event => {
     .catch(authUi.signOutFailure)
 }
 
-const setChangePassword = function () {
-  // $('userModal').modal('hide')
-  $('#change-password-form').modal('show')
-}
+// const setChangePassword = function () {
+//   // $('userModal').modal('hide')
+//   authUi.
+// }
 
 const onChangePassword = event => {
   event.preventDefault()

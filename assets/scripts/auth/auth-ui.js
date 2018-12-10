@@ -49,7 +49,7 @@ const signInSuccess = apiData => {
   const userName = userStore.user.user.email
   // welcome message for user
   // console.log(userName)
-  $('#username').text('Welcome!')
+  $('#welcome').text('Welcome!')
   $('#userModalLabel').text(userName)
   $('#authModal').modal('hide')
 
@@ -81,36 +81,32 @@ const signInFailure = apiData => {
 
 const signOutSuccess = function (apiData) {
   // Tell user they've signed out
-  $('#username').text('See you soon!')
+  $('#welcome').text('See you soon!')
   $('#userModal').modal('hide')
   $('#plot-holder').text('')
 
   clearAfterTime()
 
   // clear error messages
-  // clearUserErrorMessage()
-
-  // clear any message
+  clearUserErrorMessage()
 
   // console.log('signOutSuccess ran. Data is:', apiData)
-
-  // clear user store
-  userStore.user = {}
   return ''
 }
 
 const clearAfterTime = function () {
   setTimeout(() => {
-    $('#username').text('')
+    $('#welcome').text('')
   }, 4000)
 }
 
 const signOutFailure = function (apiData) {
+  // console.log(apiData)
   // sign out faliure message
-
+  $('#user-auth-error').text('Something went wrong. Close application to complete signout.')
   // console.error('signOutFaliure ran. Data is:', apiData)
 
-  // userStore.user = {}
+  userStore.user = {}
 }
 
 const changePasswordSuccess = function (apiData) {
@@ -126,8 +122,9 @@ const changePasswordSuccess = function (apiData) {
 
 const changePasswordFailure = function (apiData) {
   // tell user of pass change failure
+  console.log(apiData)
 
-// clear password form
+  // clear password form
   $('.pass-form').val('')
 }
 
@@ -145,6 +142,11 @@ const showSignUp = function (event) {
   hideForms()
   $('#sign-up').toggleClass('hidden')
   clearUserForms()
+}
+
+const showChangePassword = function () {
+  event.preventDefault()
+  $('#change-password-form').toggleClass('hidden')
 }
 
 const hideForms = function () {
@@ -167,5 +169,6 @@ module.exports = {
   signOutFailure,
   changePasswordFailure,
   showSignIn,
-  showSignUp
+  showSignUp,
+  showChangePassword
 }
