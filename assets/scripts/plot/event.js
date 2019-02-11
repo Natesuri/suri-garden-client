@@ -26,6 +26,8 @@ const addPlotEventHandlers = function () {
   $('#climate').on('submit', onUpdatePlotAttr)
   $('#notes').on('submit', onUpdatePlotAttr)
   $('#delete-plot').on('click', onDeletePlot)
+  // button to add corn to plot
+  $('#addPlant').on('click', onAddPlant)
 }
 
 const addEventHandlers = function () {
@@ -66,6 +68,20 @@ const onEditPlotAttr = function () {
   const editAttr = event.target.id
   // console.log(editAttr)
   $(`.edit-plot-${editAttr}`).toggleClass('hidden')
+}
+
+// function to add corn to plot
+const onAddPlant = function () {
+  event.preventDefault()
+  ui.clearUserMessage()
+  hideForms()
+  const plotId = $(event.target).closest('section').data('id')
+  const plantId = 6
+  // button that hits the plot endpoint
+  api.addPlant(plotId, plantId)
+    .then(initializePlots)
+    .then(ui.updatePlotSuccess)
+    .catch()
 }
 
 const onUpdatePlotAttr = function () {
