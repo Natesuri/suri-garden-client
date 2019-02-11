@@ -68,11 +68,23 @@ h6 {
 }
 
 .plant {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   height: $plant-height;
-  width: $plant-width;
+  min-width: $plant-width;
   background: green;
   margin: 10px;
   border-radius: 5px;
+  padding: 10px;
+
+  div {
+    padding-right: 10px;
+  }
+
+  button {
+    height: auto;
+  }
 }
 
 .top {
