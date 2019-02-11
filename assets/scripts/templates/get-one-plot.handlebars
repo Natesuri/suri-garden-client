@@ -4,6 +4,11 @@
     <span aria-hidden="true">&otimes;</span>
   </button>
 </div>
+<div id="plant-holder" class="plant-holder row">
+  {{#each plants as |plant| }}
+    <div class="plant">{{plant.name}}</div>
+  {{/each}}
+</div>
 <section data-id={{plot.id}} id='one-plot' class="modal-body">
     <div class='hidden edit-plot edit-plot-name-edit'>
       <form id="name">

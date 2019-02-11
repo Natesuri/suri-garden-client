@@ -19,7 +19,7 @@ const hidePlotAdder = function () {
 }
 
 const getPlotSuccess = function (apiData) {
-  const showPlotHTML = showPlotTemplate({plot: apiData.plot})
+  const showPlotHTML = showPlotTemplate({plot: apiData.plot, plants: apiData.plants})
   $('#one-plot-modal-content').html(showPlotHTML)
   $('#onePlotModal').modal('show')
   return ''
