@@ -4,12 +4,15 @@
     <span aria-hidden="true">&otimes;</span>
   </button>
 </div>
-<div id="plant-holder" class="plant-holder row">
-  {{#each plants as |plant| }}
-    <div class="plant">{{plant.name}}</div>
-  {{/each}}
-</div>
 <section data-id={{plot.id}} id='one-plot' class="modal-body">
+  <div id="plant-holder" class="plant-holder row">
+    {{#each plotPlants as |pp| }}
+      <div class="plant" data-plot-plant-id={{pp.plot_plants.id}}>
+        <div>{{pp.plant.name}}</div>
+        <button class='delete deletePlant'>x</button>
+      </div>
+    {{/each}}
+  </div>
   <div>
     <button id='addPlant' class='btn btn-secondary'>Add Corn!</button>
   </div>
