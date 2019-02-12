@@ -27,7 +27,7 @@ const addPlotEventHandlers = function () {
   $('#notes').on('submit', onUpdatePlotAttr)
   $('#delete-plot').on('click', onDeletePlot)
   // button to add corn to plot
-  $('#addPlant').on('click', onAddPlant)
+  $('.addPlant').on('click', onAddPlant)
   $('.deletePlant').on('click', onRemovePlant)
 }
 
@@ -77,7 +77,7 @@ const onAddPlant = function () {
   ui.clearUserMessage()
   hideForms()
   const plotId = $(event.target).closest('section').data('id')
-  const plantId = 6
+  const plantId = $(event.target).closest('div').data('plant-id')
   // button that hits the plot endpoint
   api.addPlant(plotId, plantId)
     .then(initializePlots)
