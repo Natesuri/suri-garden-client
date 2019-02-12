@@ -48,6 +48,7 @@ h6 {
 }
 
 .plot {
+  min-width: 20%;
   background: white;
   margin: 20px;
   padding: 10px;
@@ -67,11 +68,23 @@ h6 {
 }
 
 .plant {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   height: $plant-height;
-  width: $plant-width;
+  min-width: $plant-width;
   background: green;
   margin: 10px;
   border-radius: 5px;
+  padding: 10px;
+
+  div {
+    padding-right: 10px;
+  }
+
+  button {
+    height: auto;
+  }
 }
 
 .top {
@@ -80,6 +93,10 @@ h6 {
 
 .plots-heading {
   height: 80px;
+}
+
+.addPlant {
+  margin-bottom: 5px;
 }
 
 // .harvest-reminder > p {

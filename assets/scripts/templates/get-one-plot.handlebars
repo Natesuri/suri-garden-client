@@ -5,6 +5,23 @@
   </button>
 </div>
 <section data-id={{plot.id}} id='one-plot' class="modal-body">
+  <div id="plant-holder" class="plant-holder row">
+    {{#each plotPlants as |pp| }}
+      <div class="plant" data-plot-plant-id={{pp.plot_plants.id}}>
+        <div>{{pp.plant.name}}</div>
+        <button class='delete deletePlant'>x</button>
+      </div>
+    {{/each}}
+  </div>
+  <div data-plant-id='6'>
+    <button class='btn btn-secondary addPlant'>Add Corn!</button>
+  </div>
+  <div data-plant-id='5'>
+    <button class='btn btn-secondary addPlant'>Add Tomato!</button>
+  </div>
+  <div data-plant-id='7'>
+    <button class='btn btn-secondary addPlant'>Add Potato!</button>
+  </div>
     <div class='hidden edit-plot edit-plot-name-edit'>
       <form id="name">
         <input class='' name="plot[name]" type="text"><input type="submit" value='Confirm'>

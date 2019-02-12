@@ -50,10 +50,32 @@ const deletePlot = function (plotId) {
   })
 }
 
+const addPlant = function (plotId, plantId) {
+  const userToken = userStore.user.user.token
+  return $.ajax({
+    url: config.apiUrl + `/plots/${plotId}/add-plant`,
+    method: 'PATCH',
+    headers: {Authorization: `Token token=${userToken}`},
+    data: { plant: { plantId } }
+  })
+}
+
+const removePlant = function (plotId, plotPlantId) {
+  const userToken = userStore.user.user.token
+  return $.ajax({
+    url: config.apiUrl + `/plots/${plotId}/remove-plant`,
+    method: 'PATCH',
+    headers: {Authorization: `Token token=${userToken}`},
+    data: { plotPlant: { plotPlantId } }
+  })
+}
+
 module.exports = {
   getPlots,
   addPlot,
   getPlot,
   updatePlot,
-  deletePlot
+  deletePlot,
+  addPlant,
+  removePlant
 }

@@ -3,17 +3,11 @@ const showPlotTemplate = require('../templates/get-one-plot.handlebars')
 // const userStore = require('../userStore.js')
 
 const getPlotsSuccess = function (data) {
-// need to add username to Username Temp Spot
-
   // later, will sort data by index
 
-  // console.log('running handlebars template')
-  // console.log('after a delete or update this is the data that runs', data)
-  const indexPlotsHTML = indexPlotsTemplate({plots: data.plots})
+  const indexPlotsHTML = indexPlotsTemplate({plotPlants: data})
   $('.plot-holder').html(indexPlotsHTML)
-  // console.log('gets to the return')
   return ''
-  // console.log('If you see me first, great.')
 }
 
 const showPlotAdder = function () {
@@ -25,7 +19,7 @@ const hidePlotAdder = function () {
 }
 
 const getPlotSuccess = function (apiData) {
-  const showPlotHTML = showPlotTemplate({plot: apiData.plot})
+  const showPlotHTML = showPlotTemplate({plot: apiData.plot, plotPlants: apiData.plot_plants})
   $('#one-plot-modal-content').html(showPlotHTML)
   $('#onePlotModal').modal('show')
   return ''
