@@ -60,11 +60,22 @@ const addPlant = function (plotId, plantId) {
   })
 }
 
+const removePlant = function (plotId, plotPlantId) {
+  const userToken = userStore.user.user.token
+  return $.ajax({
+    url: config.apiUrl + `/plots/${plotId}/remove-plant`,
+    method: 'PATCH',
+    headers: {Authorization: `Token token=${userToken}`},
+    data: { plotPlant: { plotPlantId } }
+  })
+}
+
 module.exports = {
   getPlots,
   addPlot,
   getPlot,
   updatePlot,
   deletePlot,
-  addPlant
+  addPlant,
+  removePlant
 }

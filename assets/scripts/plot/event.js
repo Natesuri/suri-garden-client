@@ -28,6 +28,7 @@ const addPlotEventHandlers = function () {
   $('#delete-plot').on('click', onDeletePlot)
   // button to add corn to plot
   $('#addPlant').on('click', onAddPlant)
+  $('.deletePlant').on('click', onRemovePlant)
 }
 
 const addEventHandlers = function () {
@@ -79,6 +80,18 @@ const onAddPlant = function () {
   const plantId = 6
   // button that hits the plot endpoint
   api.addPlant(plotId, plantId)
+    .then(initializePlots)
+    .then(ui.updatePlotSuccess)
+    .catch()
+}
+
+const onRemovePlant = function (event) {
+  event.preventDefault()
+  ui.clearUserMessage()
+  hideForms()
+  const plotId = $(event.target).closest('section').data('id')
+  const plotPlantId = $(event.target).parent().data('plot-plant-id')
+  api.removePlant(plotId, plotPlantId)
     .then(initializePlots)
     .then(ui.updatePlotSuccess)
     .catch()
