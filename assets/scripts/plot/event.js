@@ -7,11 +7,16 @@ const initializePlots = function (data) {
   ui.clearUserMessage()
   api.getPlots()
     .then(ui.getPlotsSuccess)
-    .then(() => $('.plot').on('click', onGetPlot))
+    .then(() => $('.plot').on('click', onGetPlotId))
     .catch()
   // There must be a better way to do this.
   ui.hidePlotAdder()
   return ''
+}
+
+const onGetPlotId = function () {
+  const plotId = $(event.target).closest('section').data('id')
+  onGetPlot(plotId)
 }
 
 const addPlotEventHandlers = function () {
@@ -26,7 +31,7 @@ const addPlotEventHandlers = function () {
   $('#climate').on('submit', onUpdatePlotAttr)
   $('#notes').on('submit', onUpdatePlotAttr)
   $('#delete-plot').on('click', onDeletePlot)
-  // button to add corn to plot
+  $('#return').on('click', initializePlots)
   $('.addPlant').on('click', onAddPlant)
   $('.deletePlant').on('click', onRemovePlant)
 }
@@ -52,9 +57,8 @@ const onAddPlot = function () {
     .catch()
 }
 
-const onGetPlot = function () {
+const onGetPlot = function (plotId) {
   ui.clearUserMessage()
-  const plotId = $(event.target).closest('section').data('id')
   // console.log(`you clicked plot ${plotId}`)
   api.getPlot(plotId)
     .then(ui.getPlotSuccess)
@@ -80,7 +84,7 @@ const onAddPlant = function () {
   const plantId = $(event.target).closest('div').data('plant-id')
   // button that hits the plot endpoint
   api.addPlant(plotId, plantId)
-    .then(initializePlots)
+    .then(() => onGetPlot(plotId))
     .then(ui.updatePlotSuccess)
     .catch()
 }
@@ -92,7 +96,7 @@ const onRemovePlant = function (event) {
   const plotId = $(event.target).closest('section').data('id')
   const plotPlantId = $(event.target).parent().data('plot-plant-id')
   api.removePlant(plotId, plotPlantId)
-    .then(initializePlots)
+    .then(() => onGetPlot(plotId))
     .then(ui.updatePlotSuccess)
     .catch()
 }
@@ -104,7 +108,7 @@ const onUpdatePlotAttr = function () {
   const plotId = $(event.target).closest('section').data('id')
   // const updateAttr = event.target.id
   api.updatePlot(data, plotId)
-    .then(initializePlots)
+    .then(() => onGetPlot(plotId))
     .then(ui.updatePlotSuccess)
     .catch()
 }

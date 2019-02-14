@@ -7,6 +7,10 @@ const getPlotsSuccess = function (data) {
 
   const indexPlotsHTML = indexPlotsTemplate({plotPlants: data})
   $('.plot-holder').html(indexPlotsHTML)
+  if ($('#individualPlotView').css('display') !== 'none') {
+    $('#individualPlotView').toggle()
+    $('#plots').toggle()
+  }
   return ''
 }
 
@@ -21,6 +25,10 @@ const hidePlotAdder = function () {
 const getPlotSuccess = function (apiData) {
   const showPlotHTML = showPlotTemplate({plot: apiData.plot, plotPlants: apiData.plot_plants})
   $('#individualPlotView').html(showPlotHTML)
+  if ($('#plots').css('display') !== 'none') {
+    $('#individualPlotView').toggle()
+    $('#plots').toggle()
+  }
   return ''
 }
 
