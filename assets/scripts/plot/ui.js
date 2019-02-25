@@ -1,5 +1,5 @@
 const indexPlotsTemplate = require('../templates/get-plots.handlebars')
-const showPlotTemplate = require('../templates/get-one-plot.handlebars')
+const showPlotTemplate = require('../templates/get-one-plot-view.handlebars')
 // const userStore = require('../userStore.js')
 
 const getPlotsSuccess = function (data) {
@@ -7,6 +7,10 @@ const getPlotsSuccess = function (data) {
 
   const indexPlotsHTML = indexPlotsTemplate({plotPlants: data})
   $('.plot-holder').html(indexPlotsHTML)
+  if ($('#individualPlotView').css('display') !== 'none') {
+    $('#individualPlotView').toggle()
+    $('#plots').toggle()
+  }
   return ''
 }
 
@@ -20,13 +24,15 @@ const hidePlotAdder = function () {
 
 const getPlotSuccess = function (apiData) {
   const showPlotHTML = showPlotTemplate({plot: apiData.plot, plotPlants: apiData.plot_plants})
-  $('#one-plot-modal-content').html(showPlotHTML)
-  $('#onePlotModal').modal('show')
+  $('#individualPlotView').html(showPlotHTML)
+  if ($('#plots').css('display') !== 'none') {
+    $('#individualPlotView').toggle()
+    $('#plots').toggle()
+  }
   return ''
 }
 
 const updatePlotSuccess = function (data) {
-  $('#onePlotModal').modal('hide')
   $('#user-message').text('Plot updated successfully')
 }
 

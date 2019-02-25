@@ -1,0 +1,85 @@
+<div>
+  <div>
+    <button id='return'>Return</button>
+  </div>
+  <section data-id={{plot.id}} id='one-plot'>
+    <div>
+      <div class='plotOptions'>
+        <h5>{{plot.name}}</h5>
+        <button id='name-edit' type="button" class="btn border">Edit Name</button>
+        <button data-name={{plot.name}} id="delete-plot" class="btn btn-danger">Delete Plot</button>
+      </div>
+      <div class='hidden edit-plot edit-plot-name-edit'>
+        <form id="name">
+          <input class='' name="plot[name]" type="text"><input type="submit" value='Confirm'>
+        </form>
+      </div>
+    </div>
+    <div id="plant-holder" class="plant-holder row">
+      {{#each plotPlants as |pp| }}
+        <div class="plant" data-plot-plant-id={{pp.plot_plants.id}}>
+          <div>{{pp.plant.name}}</div>
+          <button class='delete deletePlant'>x</button>
+        </div>
+      {{/each}}
+    </div>
+    <div class='plotOptions'>
+      <div>
+        <div>
+          <h6 class="align-self-center">Size: {{plot.size}}</h6>
+          <button id='size-edit' type="button" class="btn border">edit</button>
+        </div>
+        <div class='hidden edit-plot edit-plot-size-edit'>
+          <form id="size">
+            <input class='' name="plot[size]" type="text">
+            <input type="submit" value='Confirm'>
+          </form>
+        </div>
+        <div class='w-100'></div>
+        <div>
+          <h6 class="align-self-center">Brightness: {{plot.brightness}}</h6>
+          <button id='brightness-edit' type="button" class="btn border">edit</button>
+        </div>
+        <div class='hidden edit-plot edit-plot-brightness-edit'>
+          <form id="brightness">
+            <input class='' name="plot[brightness]" type="text">
+            <input type="submit" value='Confirm'>
+          </form>
+        </div>
+        <div class='w-100'></div>
+        <div>
+          <h6 class="align-self-center">Climate: {{plot.climate}}</h6>
+          <button id='climate-edit' type="button" class="btn border">edit</button>
+        </div>
+        <div class='hidden edit-plot edit-plot-climate-edit'>
+          <form id="climate">
+            <input class='' name="plot[climate]" type="text">
+            <input type="submit" value='Confirm'>
+          </form>
+        </div>
+        <div class='w-100'></div>
+        <div>
+          <h6 class="align-self-center">Notes: {{plot.notes}}</h6>
+          <button id='notes-edit' type="button" class="btn border">edit</button>
+        </div>
+        <div class='hidden edit-plot edit-plot-notes-edit'>
+          <form id="notes"><input class='' name="plot[notes]" type="text">
+            <input type="submit" value='Confirm'>
+          </form>
+        </div>
+      </div>
+      <div class=''>
+        <div data-plant-id='6'>
+          <button class='btn btn-secondary addPlant'>Add Corn!</button>
+        </div>
+        <div data-plant-id='5'>
+          <button class='btn btn-secondary addPlant'>Add Tomato!</button>
+        </div>
+        <div data-plant-id='7'>
+          <button class='btn btn-secondary addPlant'>Add Potato!</button>
+        </div>
+      </div>
+    </div>
+      <div class='w-100'></div>
+  </section>
+</div>
