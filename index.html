@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Your Garden</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div id="main" class="container-fluid row main">
+        <div id="side-bar" class="sidebar col-12 col-lg">
+          <div id="top" class="row top">
+            <div class="col-8 align-self-center"><h2 id="welcome"></h2></div>
+            <div id="menu" class="col align-self-center"><button id='user-options' class="btn btn-md">Menu</button></div>
+          </div>
+          <div id="reminders">
+            <div id="reminders-heading" class="row">
+              <div class="col"><h4>Reminders</h4></div>
+              <div class="col"><h4>|</h4></div>
+              <div class="col"><h4>edit</h4></div>
+            </div>
+            <div id="reminders-alerts">
+              <div id="alerts">
+                <div id="harvesting-reminder" class="harvest-reminder">
+                  <div id="harvest-heading" class="col"><h4>Harvest</h4></div>
+                </div>
+                <div id="watering-reminder" class="">
+                  <div id="water-heading" class="col"><h4>Water</h4></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='individualPlotView' class='plots col-12 col-lg-10'></div>
+        <div id="plots" class="plots col-12 col-lg-10">
+          <div class="plots-heading row">
+            <div class="col-1 align-self-center"><h2>Plots</h2></div>
+            <div class='col offset-2 offset-sm-1 align-self-center'>
+              <button id='new-plot-launcher' class='btn'>Add New Plot</button>
+            </div>
+          </div>
+          <div id="user-message"></div>
+          <div id="plot-holder" class="plot-holder row">
+          </div>
+        </div>
+      </div>
+
+      <div class='modal fade' id='authModal' data-backdrop="static" data-keyboard=false>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+
+                    <div class="modal-title">
+                      <h4>Welcome to Your Garden</h4>
+                      <h5 id="AuthModalLabel">Sign Up or Sign In</h5>
+                    </div>
+
+                  </div>
+                  <div id='login' class="modal-body">
+                    <div id="user-auth-message"></div>
+                    <form id='sign-up' class='hidden'>
+                      <legend>Sign Up</legend>
+                      <div id=sign-up-error class='error'></div>
+                      <div>
+                        <div>
+                          <label>Email</label>
+                          <div id=sign-up-email-error class='error'></div>
+                        </div>
+                        <input class='sign-up-form' name="credentials[email]" type="text">
+                      </div>
+                      <div class='w-100'></div>
+                      <div>
+                        <div>
+                          <label>Password</label>
+                          <div id=sign-up-password-error class='error'></div>
+                        </div>
+                        <input class='sign-up-form' name="credentials[password]" type="password">
+                      </div>
+                      <div class='w-100'></div>
+                      <div>
+                        <div>
+                          <label>Confirm password</label>
+                          <div id=sign-up-password_confirmation-error class='error'></div>
+                        </div>
+                        <input class='sign-up-form' name="credentials[password_confirmation]" type="password">
+                        <input type="submit" value='Confirm'>
+                      </div>
+                      <div class='w-100'></div>
+
+                    </form>
+                    <form id='sign-in' class='hidden'>
+                      <legend>Sign In</legend>
+                      <div id=sign-in-error class='error'></div>
+                      <div>
+                        <div>
+                          <label>Email</label>
+                        </div>
+                        <input class='sign-in-form' name="credentials[email]" type="text">
+                      </div>
+                      <div class='w-100'></div>
+                      <div>
+                        <div>
+                          <label>Password</label>
+                        </div>
+                        <input class='sign-in-form' name="credentials[password]" type="password">
+                        <input type="submit" value='Login'>
+                      </div>
+                    </form>
+                    <button id='launch-sign-up' class='btn btn-secondary form-button'>Sign Up</button>
+                    <button id='launch-sign-in' class='btn btn-secondary form-button'>Sign In</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class='modal fade' id='newPlotModal'>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="NewPlotModalLabel">Make a New Plot</h5>
+                    <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&otimes;</span>
+                    </button>
+                  </div>
+                  <div id='new-plot' class="modal-body">
+                    <form id='confirm-new-plot'>
+                      <label>Name</label>
+                      <input class='new-plot-name' name="plot[name]" type="text">
+                      <div class='w-100'></div>
+                      <label>Size</label>
+                      <input class='new-plot-size' name="plot[size]" type="text">
+                      <div class='w-100'></div>
+                      <label>Brightness</label>
+                      <input class='new-plot-brightness' name="plot[brightness]" type="text">
+                      <div class='w-100'></div>
+                      <label>Climate</label>
+                      <input class='new-plot-climate' name="plot[climate]" type="text">
+                      <div class='w-100'></div>
+                      <label>Notes</label>
+                      <input class='new-plot-notes' name="plot[notes]" type="text">
+                      <div class='w-100'></div>
+                      <input type="submit" value='Confirm'>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='modal fade' id='userModal' data-backdrop="static" data-keyboard=false>
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="userModalLabel">User Menu</h5>
+                          <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&otimes;</span>
+                          </button>
+                        </div>
+                        <div id='user-menu' class="modal-body">
+                        <div id=user-auth-error class='error'></div>
+
+                          <form id='change-password-form' class='hidden'>
+                            <legend>Change Password</legend>
+                            <div>
+                              <div>
+                                <label>Old Password</label>
+                                <div id='old-pass-error' class='error'></div>
+                              </div>
+                              <input class='pass-form' name='passwords[old]' type='password'>
+                            </div>
+                            <div class='w-100'></div>
+                            <div>
+                              <div>
+                                <label>New Password</label>
+                                <div id='new-pass-error' class='error'></div>
+                              </div>
+                              <input class='pass-form' name='passwords[new]' type='password'>
+                            </div>
+                            <input type="submit" value='Confirm'>
+                          </form>
+                          <button id='launch-change-password' class='btn btn-secondary form-button'>Change Password</button>
+                          <button id='sign-out' class='btn btn-secondary form-button'>Sign Out</button>
+                        </div>
+                        <!-- <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+    </body>
+</html>
